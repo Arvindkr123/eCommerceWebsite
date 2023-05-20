@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { TfiShoppingCartFull } from 'react-icons/tfi';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import Cart from './Cart';
 
 const NavBar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -38,17 +39,12 @@ const NavBar = () => {
         </div>
       </nav>
 
-      <Offcanvas show={showSidebar} onHide={handleCloseSidebar} placement="end">
+      <Offcanvas show={showSidebar} onHide={handleCloseSidebar} placement="end" style={{ width: '600px' }} >
         <Offcanvas.Header closeButton>
           <Offcanvas.Title className='text-uppercase text-center bg-warning p-3 rounded-4 shadow' style={{ fontFamily: 'cursive', fontSize: '30px' }}>Cart</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <p className='text-center bg-info rounded-3 font-monospace shadow'>All Cart items here below </p>
-          <ul className='list-group-horizontal d-flex justify-content-between align-content-center'>
-            <li className=' p-1 text-uppercase font-monospace list-group-item' style={{ borderBottom: "2px solid black" }}>Item</li>
-            <li className=' p-1 text-uppercase font-monospace list-group-item' style={{ borderBottom: "2px solid black" }}>price</li>
-            <li className=' p-1 text-uppercase font-monospace list-group-item' style={{ borderBottom: "2px solid black" }}>quantity</li>
-          </ul>
+          <Cart />
         </Offcanvas.Body>
       </Offcanvas>
     </div>
