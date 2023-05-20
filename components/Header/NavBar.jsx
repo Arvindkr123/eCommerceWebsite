@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { TfiShoppingCartFull } from 'react-icons/tfi';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Cart from './Cart';
+import cartContext from '../../store/cart-context';
 
 const NavBar = () => {
+  const {items} = useContext(cartContext);
   const [showSidebar, setShowSidebar] = useState(false);
 
   const toggleSidebar = () => {
@@ -33,7 +35,7 @@ const NavBar = () => {
               </li>
             </ul>
             <Link to='/store' variant='secondary' onClick={toggleSidebar} className="nav-link text-white" style={{ padding: '5px', marginRight: '50px' }}>
-              <TfiShoppingCartFull size={'60px'} /> 4
+              <TfiShoppingCartFull size={'60px'} /> {items.length}
             </Link>
           </div>
         </div>

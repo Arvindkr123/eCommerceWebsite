@@ -43,22 +43,22 @@ const Cart = () => {
                 {cartElements.map((item, i) => {
                     return (
                         <div className="row">
-                            <div className="col p-2" style={{borderBottom:'2px solid black'}}>
+                            <div className="col p-2" style={{ borderBottom: '2px solid black' }}>
                                 <li className="list-group-item">
                                     <img className="img-thumbnail w-100" src={item.imageUrl} />
                                 </li>
                             </div>
-                            <div className="col p-2" style={{borderBottom:'2px solid black'}}>
+                            <div className="col p-2" style={{ borderBottom: '2px solid black' }}>
                                 <li className="list-group-item">
                                     {item.title}
                                 </li>
                             </div>
-                            <div className="col p-2" style={{borderBottom:'2px solid black'}}>
+                            <div className="col p-2" style={{ borderBottom: '2px solid black' }}>
                                 <li className="list-group-item">
                                     {item.price}
                                 </li>
                             </div>
-                            <div className="col p-2" style={{borderBottom:'2px solid black'}}>
+                            <div className="col p-2" style={{ borderBottom: '2px solid black' }}>
                                 <li className="list-group-item">
                                     {item.quantity}
                                 </li>

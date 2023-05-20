@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './components/Pages/Home'
 import Store from './components/Pages/Store.jsx'
 import About from './components/Pages/About.jsx'
-import NavBar from './components/Header/Navbar'
+import NavBar from './components/Header/NavBar'
 
 const App = () => {
     return (
