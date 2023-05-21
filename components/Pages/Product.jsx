@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Card, Button } from 'react-bootstrap'
+import { CartContext } from '../../store/CartContext'
 const productsArr = [
     {
         title: 'Colors',
@@ -27,6 +28,7 @@ const productsArr = [
 
 
 const Product = () => {
+    const { cartItems, addToCart } = useContext(CartContext);
     return (
         <>
             {
@@ -45,7 +47,7 @@ const Product = () => {
                                 </div>
                                 <Card.Body className="d-flex justify-content-around align-content-center">
                                     <Card.Text style={{ fontWeight: '700' }}>Price: ${item.price}</Card.Text>
-                                    <Button variant="primary" onClick={() => alert('hiii')}>ADD TO CART</Button>
+                                    <Button variant="primary" onClick={() => addToCart(item)}>ADD TO CART</Button>
                                 </Card.Body>
                             </Card>
                         </div>
