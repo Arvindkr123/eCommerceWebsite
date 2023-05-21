@@ -34,7 +34,8 @@ const Product = () => {
             {
                 productsArr.map((item, i) => {
                     return (
-                        <div key={i} className="col-md-4 flex-wrap mb-4">
+                        <div key={i} className="col-md-4 mb-4 d-flex justify-content-center">
+
                             <Card className='shadow border-0' style={{ width: '500px', height: '500px' }}>
                                 <Card.Title className='text-center p-2' style={{ fontFamily: 'fantasy' }}>{item.title}</Card.Title>
                                 <div className="card-img-wrapper">
@@ -50,6 +51,7 @@ const Product = () => {
                                     <Button variant="primary" onClick={() => addToCart(item)}>ADD TO CART</Button>
                                 </Card.Body>
                             </Card>
+
                         </div>
                     )
                 })

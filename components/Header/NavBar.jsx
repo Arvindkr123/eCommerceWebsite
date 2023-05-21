@@ -18,7 +18,7 @@ const NavBar = () => {
   };
 
   return (
-    <div>
+    <header>
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark fixed-top text-uppercase">
         <div className="container-fluid">
           <div className="collapse navbar-collapse" id="mynavbar">
@@ -31,6 +31,9 @@ const NavBar = () => {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/about">About</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/contact">Contact</Link>
               </li>
             </ul>
             <Link to='/store' variant='secondary' onClick={toggleSidebar} className="nav-link text-white" style={{ padding: '5px', marginRight: '50px' }}>
@@ -48,7 +51,7 @@ const NavBar = () => {
           <Cart />
         </Offcanvas.Body>
       </Offcanvas>
-    </div>
+    </header>
   );
 };
 

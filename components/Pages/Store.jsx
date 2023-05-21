@@ -14,7 +14,7 @@ const Store = () => {
             </section>
 
             <section style={{ marginTop: '3rem' }} >
-                <div className="container-fluid">
+                <div className="container-fluid m-auto">
                     <div className="row mt-5 gap-5 d-flex justify-content-center">
                         <Product />
                     </div>
