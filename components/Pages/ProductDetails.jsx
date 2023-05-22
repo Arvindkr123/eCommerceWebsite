@@ -1,17 +1,18 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import cartElements from './cartElement';
-import { ImYoutube, ImSpotify } from 'react-icons/im'
-import { SiFacebook } from 'react-icons/si'
+import { ImYoutube, ImSpotify } from 'react-icons/im';
+import { SiFacebook } from 'react-icons/si';
 import { CartContext } from '../../store/CartContext';
+import ImageZoom from 'react-image-zoom';
 
 const ProductDetails = () => {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const { dispatch } = useContext(CartContext);
     const addCartHandler = () => {
-        dispatch({ type: 'ADD_TO_CART', payload: product })
-    }
+        dispatch({ type: 'ADD_TO_CART', payload: product });
+    };
 
     useEffect(() => {
         const fetchProductDetails = () => {
@@ -37,9 +38,23 @@ const ProductDetails = () => {
                                 </div>
                             </div>
                             <div className="col-md-6 w-500 h-100 text-center">
-                                <img src={product.imageUrl} className='img-fluid w-50' alt='product' />
+                                <ImageZoom
+                                    zoomImage={{
+                                        src: product.imageUrl,
+                                        alt: 'product'
+                                    }}
+                                    image={{
+                                        src: product.imageUrl,
+                                        alt: 'product',
+                                        className: 'img-fluid w-100',
+                                        style: { maxHeight: '400px' }
+                                    }}
+                                    zoomProps={{
+                                        width: 400,
+                                        height: 400
+                                    }}
+                                />
                             </div>
-
                         </div>
                     </div>
                 ) : (
