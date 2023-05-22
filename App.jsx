@@ -7,7 +7,7 @@ import NavBar from './components/Header/NavBar'
 import { CartProvider } from './store/CartContext'
 import Contact from './components/Pages/Contact'
 import Product from './components/Pages/Product'
-
+import ProductDetails from './components/Pages/ProductDetails'
 const App = () => {
     return (
         <BrowserRouter>
@@ -16,6 +16,7 @@ const App = () => {
                 <Routes>
                     <Route path='/' exact element={<Home />} />
                     <Route path='/store' exact element={<Store />} />
+                    <Route path='/store/:id' exact element={<ProductDetails />} />
                     <Route path='/about' exact element={<About />} />
                     <Route path='/contact' exact element={<Contact />} />
                 </Routes>
