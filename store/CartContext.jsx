@@ -13,7 +13,6 @@ export const CartContext = createContext();
 const cartReducer = (state, action) => {
     switch (action.type) {
         case 'ADD_TO_CART':
-            // Check if the product already exists in the cart
             const existingProductIndex = state.cartItems.findIndex(
                 (item) => item.id === action.payload.id
             );
@@ -30,17 +29,25 @@ const cartReducer = (state, action) => {
 
                 updatedCartItems[existingProductIndex] = updatedProduct;
 
+                const updatedTotalAmount = state.totalAmount + action.payload.price * action.payload.quantity;
+
                 return {
                     ...state,
                     cartItems: updatedCartItems,
+                    totalAmount: updatedTotalAmount,
                 };
             } else {
                 // If the product doesn't exist, add it to the cart
+                const updatedCartItems = [...state.cartItems, action.payload];
+                const updatedTotalAmount = state.totalAmount + action.payload.price * action.payload.quantity;
+
                 return {
                     ...state,
-                    cartItems: [...state.cartItems, action.payload],
+                    cartItems: updatedCartItems,
+                    totalAmount: updatedTotalAmount,
                 };
             }
+
         case 'REMOVE_FROM_CART':
             const updatedItems = state.cartItems.filter((item) => item.id !== action.payload.id);
             const updatedAmount = updatedItems.reduce((total, item) => total + item.price * item.quantity, 0);

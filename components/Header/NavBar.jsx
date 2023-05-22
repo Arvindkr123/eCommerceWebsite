@@ -48,7 +48,7 @@ const NavBar = () => {
           <Offcanvas.Title className='text-uppercase text-center bg-warning p-3 rounded-4 shadow' style={{ fontFamily: 'cursive', fontSize: '30px' }}>Cart</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <Cart />
+          <Cart/>
         </Offcanvas.Body>
       </Offcanvas>
     </header>

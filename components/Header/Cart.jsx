@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext , useEffect, useState} from "react";
 import { CartContext } from "../../store/CartContext";
 
 const Cart = () => {
@@ -6,6 +6,12 @@ const Cart = () => {
     const removeCartHandler = (product) => {
         dispatch({ type: 'REMOVE_FROM_CART', payload: product });
     }
+    const [totalAmount, setTotalAmount] = useState(state.totalAmount);
+    console.log(totalAmount)
+
+    useEffect(() => {
+        setTotalAmount(state.totalAmount);
+    }, [state.totalAmount]);
 
     const clearCartHandler = () => {
         dispatch({ type: 'CLEAR_CART' });
@@ -57,9 +63,9 @@ const Cart = () => {
                         </div>
                     )
                 }) : <h1 className="text-white bg-danger p-3 shadow rounded-4">Cart is Empty</h1>}
-            </div>
-            <p className="text-dark h3 bg-secondary rounded-3 mt-3 text-center">Total Amount ${state.totalAmount}</p>
+                <p className="text-dark h3 bg-secondary rounded-3 mt-3 text-center">Total Amount ${totalAmount}</p>
             <button onClick={clearCartHandler} className="btn btn mt-2 text-uppercase bg-black text-white">Clear Cart</button>
+            </div>
         </section>
     )
 }
