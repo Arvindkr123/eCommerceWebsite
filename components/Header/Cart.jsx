@@ -6,6 +6,10 @@ const Cart = () => {
     const removeCartHandler = (product) => {
         dispatch({ type: 'REMOVE_FROM_CART', payload: product });
     }
+
+    const clearCartHandler = () => {
+        dispatch({ type: 'CLEAR_CART' });
+    }
     return (
         <section>
             <div className="container">
@@ -55,6 +59,7 @@ const Cart = () => {
                 }) : <h1 className="text-white bg-danger p-3 shadow rounded-4">Cart is Empty</h1>}
             </div>
             <p className="text-dark h3 bg-secondary rounded-3 mt-3 text-center">Total Amount ${state.totalAmount}</p>
+            <button onClick={clearCartHandler} className="btn btn mt-2 text-uppercase bg-black text-white">Clear Cart</button>
         </section>
     )
 }
