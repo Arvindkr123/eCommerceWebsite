@@ -19,11 +19,6 @@ const Store = () => {
                         <Product />
                     </div>
                 </div>
-                <div className='row mt-5'>
-                    <div className="col-12 text-center">
-                        <Link to='/store' className='btn btn-outline-primary' style={{ fontSize: '30px' }}>See the cart</Link>
-                    </div>
-                </div>
             </section>
 
             <footer className='bg-info mt-3 h-75 overflow-hidden'>

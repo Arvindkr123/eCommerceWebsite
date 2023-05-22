@@ -1,27 +1,11 @@
-import React from "react";
-const cartElements = [
-    {
-        title: 'Colors',
-        price: 100,
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-        quantity: 2,
-    },
-    {
-        title: 'Black and white Colors',
-        price: 50,
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-        quantity: 3,
-    },
-    {
-        title: 'Yellow and Black Colors',
-        price: 70,
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-        quantity: 1,
-    }
-
-]
+import React, { useContext } from "react";
+import { CartContext } from "../../store/CartContext";
 
 const Cart = () => {
+    const { state, dispatch } = useContext(CartContext);
+    const removeCartHandler = (product) => {
+        dispatch({ type: 'REMOVE_FROM_CART', payload: product });
+    }
     return (
         <section>
             <div className="container">
@@ -40,9 +24,9 @@ const Cart = () => {
                     </div>
                 </div>
 
-                {cartElements.map((item, i) => {
+                {state.cartItems.length > 0 ? state.cartItems.map((item) => {
                     return (
-                        <div className="row">
+                        <div className="row" key={item.id}>
                             <div className="col p-2" style={{ borderBottom: '2px solid black' }}>
                                 <li className="list-group-item">
                                     <img className="img-thumbnail w-100" src={item.imageUrl} />
@@ -60,13 +44,17 @@ const Cart = () => {
                             </div>
                             <div className="col p-2" style={{ borderBottom: '2px solid black' }}>
                                 <li className="list-group-item">
-                                    {item.quantity}
+                                    <span className="text-dark bg-warning mb-4 h1 shadow rounded-circle">
+                                        {item.quantity}
+                                    </span>
+                                    <button className="btn btn-danger" onClick={() => removeCartHandler(item)}>Remove</button>
                                 </li>
                             </div>
                         </div>
                     )
-                })}
+                }) : <h1 className="text-white bg-danger p-3 shadow rounded-4">Cart is Empty</h1>}
             </div>
+            <p className="text-dark h3 bg-secondary rounded-3 mt-3 text-center">Total Amount ${state.totalAmount}</p>
         </section>
     )
 }

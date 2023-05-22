@@ -6,7 +6,7 @@ import Cart from './Cart';
 import { CartContext } from '../../store/CartContext';
 
 const NavBar = () => {
-  const { cartItems} = useContext(CartContext);
+  const { state, dispatch } = useContext(CartContext);
   const [showSidebar, setShowSidebar] = useState(false);
 
   const toggleSidebar = () => {
@@ -37,7 +37,7 @@ const NavBar = () => {
               </li>
             </ul>
             <Link to='/store' variant='secondary' onClick={toggleSidebar} className="nav-link text-white" style={{ padding: '5px', marginRight: '50px' }}>
-              <TfiShoppingCartFull size={'60px'} />{cartItems.length}
+              <TfiShoppingCartFull size={'60px'} />{state.cartItems.length}
             </Link>
           </div>
         </div>
