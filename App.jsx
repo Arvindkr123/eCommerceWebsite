@@ -6,7 +6,6 @@ import About from './components/Pages/About.jsx'
 import NavBar from './components/Header/NavBar'
 import { CartProvider } from './store/CartContext'
 import Contact from './components/Pages/Contact'
-import Product from './components/Pages/Product'
 import ProductDetails from './components/Pages/ProductDetails'
 const App = () => {
     return (
