@@ -17,7 +17,6 @@ const NavBar = () => {
     navigate("/login");
   }
 
-
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
   };
@@ -42,13 +41,12 @@ const NavBar = () => {
                 <Link className="nav-link" to="/about">About</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/login">login</Link>
+                <Link className="nav-link" onClick={logOutHandler} to="/login">{authCtx.isLoggedIn ? 'logout' : 'login'}</Link>
               </li>
             </ul>
             <Link to='/store' variant='secondary' onClick={toggleSidebar} className="nav-link text-white" style={{ padding: '5px', marginRight: '50px' }}>
               <TfiShoppingCartFull size={'60px'} />{state.cartItems.length}
             </Link>
-            <button className='btn btn-body text-white' onClick={logOutHandler}>{authCtx.islogin ? 'logOut' : 'logIn'}</button>
           </div>
         </div>
       </nav>
