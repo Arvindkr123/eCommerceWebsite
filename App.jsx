@@ -7,19 +7,24 @@ import NavBar from './components/Header/NavBar'
 import { CartProvider } from './store/CartContext'
 import Contact from './components/Pages/Contact'
 import ProductDetails from './components/Pages/ProductDetails'
+import Login from './components/Pages/Login'
+import { AuthContextProvider } from './store/AuthContextProvider'
 const App = () => {
     return (
         <BrowserRouter>
-            <CartProvider>
-                <NavBar />
-                <Routes>
-                    <Route path='/' exact element={<Home />} />
-                    <Route path='/store' exact element={<Store />} />
-                    <Route path='/store/:id' exact element={<ProductDetails />} />
-                    <Route path='/about' exact element={<About />} />
-                    <Route path='/contact' exact element={<Contact />} />
-                </Routes>
-            </CartProvider>
+            <AuthContextProvider>
+                <CartProvider>
+                    <NavBar />
+                    <Routes>
+                        <Route path='/' exact element={<Home />} />
+                        <Route path='/store' exact element={<Store />} />
+                        <Route path='/store/:id' exact element={<ProductDetails />} />
+                        <Route path='/about' exact element={<About />} />
+                        <Route path='/login' element={<Login />} />
+                        <Route path='/contact' exact element={<Contact />} />
+                    </Routes>
+                </CartProvider>
+            </AuthContextProvider>
         </BrowserRouter>
     )
 }

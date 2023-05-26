@@ -1,13 +1,22 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { TfiShoppingCartFull } from 'react-icons/tfi';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Cart from './Cart';
 import { CartContext } from '../../store/CartContext';
+import AuthContext from '../../store/AuthContextProvider';
 
 const NavBar = () => {
   const { state, dispatch } = useContext(CartContext);
   const [showSidebar, setShowSidebar] = useState(false);
+  const authCtx = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const logOutHandler = () => {
+    authCtx.logout();
+    navigate("/login");
+  }
+
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
@@ -32,10 +41,14 @@ const NavBar = () => {
               <li className="nav-item">
                 <Link className="nav-link" to="/about">About</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">login</Link>
+              </li>
             </ul>
             <Link to='/store' variant='secondary' onClick={toggleSidebar} className="nav-link text-white" style={{ padding: '5px', marginRight: '50px' }}>
               <TfiShoppingCartFull size={'60px'} />{state.cartItems.length}
             </Link>
+            <button className='btn btn-body text-white' onClick={logOutHandler}>{authCtx.islogin ? 'logOut' : 'logIn'}</button>
           </div>
         </div>
       </nav>
