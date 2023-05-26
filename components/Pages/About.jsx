@@ -1,6 +1,7 @@
 import React from 'react'
 import { ImYoutube, ImSpotify } from 'react-icons/im'
 import { SiFacebook } from 'react-icons/si'
+import { Link } from 'react-router-dom'
 const About = () => {
     return (
         <div className='' style={{ marginTop: '3.6rem' }}>
@@ -29,6 +30,7 @@ const About = () => {
                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
                                     Ut wisi enim ad minim veniam, quis nostrud.
                                 </p>
+                                <Link to='/contact' className='text-uppercase btn btn-success shadow'>Contact us</Link>
                             </div>
                         </div>
                         <div className="col-12 col-lg-5 about-us-box wow fadeInUp">

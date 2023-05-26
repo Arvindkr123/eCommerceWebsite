@@ -32,9 +32,6 @@ const NavBar = () => {
               <li className="nav-item">
                 <Link className="nav-link" to="/about">About</Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/contact">Contact</Link>
-              </li>
             </ul>
             <Link to='/store' variant='secondary' onClick={toggleSidebar} className="nav-link text-white" style={{ padding: '5px', marginRight: '50px' }}>
               <TfiShoppingCartFull size={'60px'} />{state.cartItems.length}
@@ -48,7 +45,7 @@ const NavBar = () => {
           <Offcanvas.Title className='text-uppercase text-center bg-warning p-3 rounded-4 shadow' style={{ fontFamily: 'cursive', fontSize: '30px' }}>Cart</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <Cart/>
+          <Cart />
         </Offcanvas.Body>
       </Offcanvas>
     </header>
