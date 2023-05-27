@@ -3,7 +3,9 @@ import { ImYoutube, ImSpotify } from 'react-icons/im'
 import { SiFacebook } from 'react-icons/si'
 import AuthContext from '../../store/AuthContextProvider'
 import { useNavigate } from 'react-router-dom'
+import { UserMailContext } from '../../store/UserMailProvider'
 const Login = () => {
+    const mailCtx = useContext(UserMailContext);
     const [isLogin, setIsLogin] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
@@ -43,6 +45,7 @@ const Login = () => {
             setIsLoading(false);
             if (response.ok) {
                 const data = await response.json();
+                mailCtx.login(data.email)
                 const expirationTime = new Date(
                     new Date().getTime() + +data.expiresIn * 1000
                 );
