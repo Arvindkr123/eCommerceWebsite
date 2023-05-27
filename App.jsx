@@ -9,6 +9,7 @@ import Contact from './components/Pages/Contact'
 import ProductDetails from './components/Pages/ProductDetails'
 import Login from './components/Pages/Login'
 import { AuthContextProvider } from './store/AuthContextProvider'
+import Protected from './components/Auth/Protected'
 const App = () => {
     return (
         <BrowserRouter>
@@ -16,12 +17,12 @@ const App = () => {
                 <CartProvider>
                     <NavBar />
                     <Routes>
-                        <Route path='/' exact element={<Home />} />
-                        <Route path='/store' exact element={<Store />} />
-                        <Route path='/store/:id' exact element={<ProductDetails />} />
-                        <Route path='/about' exact element={<About />} />
+                        <Route path='/' exact element={<Protected Component={Home} />} />
+                        <Route path='/store' exact element={<Protected Component={Store} />} />
+                        <Route path='/store/:id' exact element={<Protected Component={ProductDetails} />} />
+                        <Route path='/about' exact element={<Protected Component={About} />} />
                         <Route path='/login' element={<Login />} />
-                        <Route path='/contact' exact element={<Contact />} />
+                        <Route path='/contact' exact element={<Protected Component={Contact} />} />
                     </Routes>
                 </CartProvider>
             </AuthContextProvider>
