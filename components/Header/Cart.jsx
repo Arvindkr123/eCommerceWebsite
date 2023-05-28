@@ -55,7 +55,7 @@ const Cart = () => {
                             <div className="col p-2" style={{ borderBottom: '2px solid black' }}>
                                 <li className="list-group-item">
                                     <span className="text-dark d-flex justify-content-evenly align-content-around">
-                                        <input className="w-25" type="text" value={item.quantity} />
+                                        <input className="w-25" type="text" placeholder={item.quantity} />
                                     </span>
                                     <button className="btn btn-danger m-2" onClick={() => removeCartHandler(item)}>Remove</button>
                                 </li>
