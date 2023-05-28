@@ -10,22 +10,26 @@ import ProductDetails from './components/Pages/ProductDetails'
 import Login from './components/Pages/Login'
 import { AuthContextProvider } from './store/AuthContextProvider'
 import Protected from './components/Auth/Protected'
+import UserMailProvider, { UserMailContext } from './store/UserMailProvider'
+import { useContext } from 'react'
 const App = () => {
     return (
         <BrowserRouter>
-            <AuthContextProvider>
-                <CartProvider>
-                    <NavBar />
-                    <Routes>
-                        <Route path='/' exact element={<Protected Component={Home} />} />
-                        <Route path='/store' exact element={<Protected Component={Store} />} />
-                        <Route path='/store/:id' exact element={<Protected Component={ProductDetails} />} />
-                        <Route path='/about' exact element={<Protected Component={About} />} />
-                        <Route path='/login' element={<Login />} />
-                        <Route path='/contact' exact element={<Protected Component={Contact} />} />
-                    </Routes>
-                </CartProvider>
-            </AuthContextProvider>
+            <UserMailProvider>
+                <AuthContextProvider>
+                    <CartProvider>
+                        <NavBar />
+                        <Routes>
+                            <Route path='/' exact element={<Protected Component={Home} />} />
+                            <Route path='/store' exact element={<Protected Component={Store} />} />
+                            <Route path='/store/:id' exact element={<Protected Component={ProductDetails} />} />
+                            <Route path='/about' exact element={<Protected Component={About} />} />
+                            <Route path='/login' element={<Login />} />
+                            <Route path='/contact' exact element={<Protected Component={Contact} />} />
+                        </Routes>
+                    </CartProvider>
+                </AuthContextProvider>
+            </UserMailProvider>
         </BrowserRouter>
     )
 }

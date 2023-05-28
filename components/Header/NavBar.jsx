@@ -5,15 +5,18 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import Cart from './Cart';
 import { CartContext } from '../../store/CartContext';
 import AuthContext from '../../store/AuthContextProvider';
+import { UserMailContext } from '../../store/UserMailProvider';
 
 const NavBar = () => {
   const { state, dispatch } = useContext(CartContext);
   const [showSidebar, setShowSidebar] = useState(false);
+  const mailCtx = useContext(UserMailContext);
   const authCtx = useContext(AuthContext);
   const navigate = useNavigate();
 
   const logOutHandler = () => {
     authCtx.logout();
+    mailCtx.logOutMail();
     navigate("/login");
   }
 
@@ -24,6 +27,8 @@ const NavBar = () => {
   const handleCloseSidebar = () => {
     setShowSidebar(false);
   };
+  
+  console.log(state.cartItems);
 
   return (
     <header>
@@ -45,7 +50,7 @@ const NavBar = () => {
               </li>
             </ul>
             <Link to='/store' variant='secondary' onClick={toggleSidebar} className="nav-link text-white" style={{ padding: '5px', marginRight: '50px' }}>
-              <TfiShoppingCartFull size={'60px'} />{state.cartItems.length}
+              <TfiShoppingCartFull size={'60px'} />{state.cartItems.length===0 ? 0: state.cartItems.length}
             </Link>
           </div>
         </div>
